@@ -9,11 +9,11 @@ export class Read extends React.Component {
         movies: []
     };
 
-    // Promise from server to get movie data
+    // Promise from server to get movie data from server
     componentDidMount() {
-        axios.get('https://jsonblob.com/api/jsonblob/520c3b5e-0312-11eb-a6af-cbf00d776032')
+        axios.get('http://localhost:4000/api/movies')
             .then((response) => {
-                this.setState({ movies: response.data.Search })
+                this.setState({ movies: response.data.movies })
             })
             .catch((error) => {
                 console.log(error)
