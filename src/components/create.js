@@ -23,38 +23,38 @@ export class Create extends React.Component {
         });
     }
 
-     // Update state when value changes for Year
-     onChangeYear(e) {
+    // Update state when value changes for Year
+    onChangeYear(e) {
         this.setState({
             Year: e.target.value
         });
     }
 
-         // Update state when value changes for Poster
-         onChangePoster(e) {
-            this.setState({
-                Poster: e.target.value
-            });
-        }
+    // Update state when value changes for Poster
+    onChangePoster(e) {
+        this.setState({
+            Poster: e.target.value
+        });
+    }
 
     // Stops button calling multiple times
     onSubmit(e) {
         e.preventDefault();
         alert("Movie: " + this.state.Title + " " + this.state.Year + " " + this.state.Poster)
-        
+
         // Passing to server
         const newMovie = {
-            Title: this.state.Title,
-            Year: this.state.Year,
-            Poster: this.state.Poster
+            title: this.state.Title,
+            year: this.state.Year,
+            poster: this.state.Poster
         }
         axios.post('http://localhost:4000/api/movies', newMovie)
-        .then((res)=>{
-            console.log(res);
-        })
-        .catch((err)=>{
-            console.log(err);
-        });
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     // Output with styling for user 
@@ -79,9 +79,9 @@ export class Create extends React.Component {
                     <div className='form-group'>
                         <label>Movie Poster: </label>
                         <textarea type='text'
-                        className='form-control'
-                        value={this.state.Poster}
-                        onChange={this.onChangePoster}>
+                            className='form-control'
+                            value={this.state.Poster}
+                            onChange={this.onChangePoster}>
                         </textarea>
                     </div>
                     <div className='form-group'>
