@@ -5,6 +5,7 @@ const port = 4000;
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
+const path = require('path');
 
 // Open connection to db
 const ConnectionString = 'mongodb+srv://admin:admin@cluster0.y6kff.mongodb.net/movies?retryWrites=true&w=majority';
@@ -19,6 +20,9 @@ var movieSchema = new Schema({
     Poster:String
 });
 var MovieModel = mongoose.model("movie", movieSchema);
+
+app.use(express.static(path.join(__dirname, '../build')));
+app.use('/static', express.static(path.join(__dirname, 'build//static')));
 
 // parse application/x-www.form-urlencoded
 app.use(bodyParser.urlencoded({ extend: false}));
@@ -104,6 +108,11 @@ app.post('/api/movies', (req, res) => {
     })
 
     res.send('Item Added');
+})
+
+// Send file back
+app.get('*', (req,res)=>{
+    res.sendFile(path.join(__dirname + '/../build/index.html'));
 })
 
 app.listen(port, () => {
