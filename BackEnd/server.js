@@ -14,9 +14,9 @@ mongoose.connect(ConnectionString, {useNewUrlParser: true});
 const Schema = mongoose.Schema;
 
 var movieSchema = new Schema({
-    title:String,
-    year:String,
-    poster:String
+    Title:String,
+    Year:String,
+    Poster:String
 });
 var MovieModel = mongoose.model("movie", movieSchema);
 
@@ -70,11 +70,11 @@ app.get('/api/movies/:id', (req,res)=>{
     })
 })
 
-// Update movie
+// Update from Edit
 app.put('/api/movies/:id', (req, res)=>{
-    console.log("Update movie: " + req.params.id);
+    console.log("Update movie: " + req.params.id);     
     console.log(req.body);
-
+    
     MovieModel.findByIdAndUpdate(req.params.id,req.body, {new:true},
         (err,data)=>{
             res.send(data);
@@ -93,14 +93,14 @@ app.delete('/api/movies/:id',(req,res)=>{
 // Pull data from body and log
 app.post('/api/movies', (req, res) => {
     console.log('Movie Recieved!');
-    console.log(req.body.title);
-    console.log(req.body.year);
-    console.log(req.body.poster);
+    console.log(req.body.Title);
+    console.log(req.body.Year);
+    console.log(req.body.Poster);
 
     MovieModel.create({
-        title:req.body.title,
-        year:req.body.year,
-        poster:req.body.poster
+        Title:req.body.Title,
+        Year:req.body.Year,
+        Poster:req.body.Poster
     })
 
     res.send('Item Added');

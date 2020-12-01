@@ -31,16 +31,16 @@ export class MovieItem extends React.Component {
         return (
             <div>
                 <Card>
-                    <Card.Header>{this.props.movie.title}</Card.Header>
+                    <Card.Header>{this.props.movie.Title}</Card.Header>
                     <Card.Body>
                         <blockquote className="blockquote mb-0">
-                            <img src={this.props.movie.poster} width="200" height="200"></img>
+                            <img src={this.props.movie.Poster} width="200" height="200"></img>
                             <footer className="blockquote-footer">
-                                {this.props.movie.year}
+                                {this.props.movie.Year}
                             </footer>
                         </blockquote>
                     </Card.Body>
-                    <Link to={"/edit/" + this.props.movie._id} className="btn btn-primary"></Link>
+                    <Link to={"/edit/" + this.props.movie._id} className="btn btn-primary">Edit</Link>
                     <Button variant = "danger" onClick={this.DeleteMovie}>Delete</Button>
                 </Card>
             </div>
