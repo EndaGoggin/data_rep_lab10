@@ -1,7 +1,7 @@
 // Use express library, port 4000
-const express = require('express')
-const app = express()
-const port = 4000
+const express = require('express');
+const app = express();
+const port = 4000;
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
@@ -93,14 +93,14 @@ app.delete('/api/movies/:id',(req,res)=>{
 // Pull data from body and log
 app.post('/api/movies', (req, res) => {
     console.log('Movie Recieved!');
-    console.log(req.body.Title);
-    console.log(req.body.Year);
-    console.log(req.body.Poster);
+    console.log(req.body.title);
+    console.log(req.body.year);
+    console.log(req.body.poster);
 
     MovieModel.create({
-        title:req.body.Title,
-        year:req.body.Year,
-        poster:req.body.Poster
+        title:req.body.title,
+        year:req.body.year,
+        poster:req.body.poster
     })
 
     res.send('Item Added');
